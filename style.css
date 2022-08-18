@@ -1,0 +1,46 @@
+.parent{
+    height:800px;
+    width:400px;
+    display:flex;
+    flex-direction: column;
+    
+    background-color: aqua;
+    border:2px solid black;
+    padding:10px;
+}
+.upparent{
+    height:100px;
+    border: 2px solid black;
+    padding:10px;
+    
+
+    margin-bottom: 10px;
+}
+.lowparent{
+    flex:1;
+    border: 2px solid black;
+    padding: 5px;
+    display:flex;
+    gap:5px;
+    flex-direction: column;
+
+}
+.lowparent div{
+    flex:1;
+    display:flex;
+    gap:5px;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.lowparent div div{
+    flex:1;
+    border: 2px solid black;
+    padding: 10px;
+
+
+}
+div{
+    font-size: 80px;
+    font-weight: 1000;
+}
