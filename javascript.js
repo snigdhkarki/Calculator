@@ -110,7 +110,8 @@ function ()
     op++;
     s = 1;
     
-    if(op == 2){calc();}
+    if(op == 2 && d.charAt(0)!='-'){calc();}
+    if(op == 3){calc();}
     
     
     
@@ -123,7 +124,8 @@ function ()
     let dis = document.createTextNode('+');
     op++;
     
-    if(op == 2){calc();}
+    if(op == 2 && d.charAt(0)!='-'){calc();}
+    if(op == 3){calc();}
     display.appendChild(dis);
     d = d+"+";
     
@@ -136,8 +138,11 @@ function ()
     let dis = document.createTextNode('-');
     op++;
     
-    if(op == 2){calc();}
+    
+    if(op == 2 && d.charAt(0)!='-'){calc();}
+    if(op == 3){calc();}
     display.appendChild(dis);
+    
     d =d+'-';
     
     
@@ -149,7 +154,8 @@ function ()
     let dis = document.createTextNode('*');
     op++;
     
-    if(op == 2){calc();}
+    if(op == 2 && d.charAt(0)!='-'){calc();}
+    if(op == 3){calc();}
     display.appendChild(dis);
     d = d+'*';
     
@@ -162,7 +168,8 @@ function ()
     let dis = document.createTextNode('/');
     op++;
     
-    if(op == 2){calc();}
+    if(op == 2 && d.charAt(0)!='-'){calc();}
+    if(op == 3){calc();}
     display.appendChild(dis);
     d =d+"/";
     
@@ -182,14 +189,21 @@ function ()
 
 function calc()
 {
-    num1 = 0;
-    num2 = 0;
+    num1 = '';
+    num2 = '';
     let count =0;
     let ope = "";
     let result = 0;
     for(let i =0;i<= (d.length-1);i++)
     {
-        if((!(d.charAt(i)=='/'||d.charAt(i)=='*'||d.charAt(i)=='+'||d.charAt(i)=='-'||d.charAt(i)=='='))&&(count==0))
+        if(d.charAt(i)=='-' && i==0)
+        {
+            num1 = num1+  d.slice(i,i+1);
+            
+
+
+        }
+        else if(((!(d.charAt(i)=='/'||d.charAt(i)=='*'||d.charAt(i)=='+'||d.charAt(i)=='-'||d.charAt(i)=='='))&&(count==0)))
         {
             num1 = num1+  d.slice(i,i+1);
             
@@ -225,6 +239,12 @@ function calc()
     {
         result = num1/num2;
     }
+    if(result != result.toFixed(2))
+    {
+        result = result.toFixed(2);
+
+    }
+    
     if (s == 0)
     {
         display.innerHTML = '';
@@ -243,6 +263,10 @@ function calc()
     op = 0;
     s = 0;
         
+    }
+    if(d.charAt(0)=='-')
+    {
+        op++;
     }
 
 
